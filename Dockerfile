@@ -1,17 +1,18 @@
 FROM debian:jessie
 
-MAINTAINER Dylan Wang "wanghaoyu@frazil.me"
-
-ARG NGINX_VERSION
-ARG OPENSSL_VERSION=1.0.2d
-
-ENV NGINX_VERSION ${NGINX_VERSION:-1.9.6}
+# original author: Dylan Wang "wanghaoyu@frazil.me"
+# see : https://github.com/Ehekatl/docker-nginx-http2
+MAINTAINER Kirth Gersen "kgersen@hotmail.com"
+# ARGS:
+#  OPENSSL_VERSION (format : x_y_zt)
+#  NGINX_VERSION (format : x.y.z)
 
 RUN apt-get update && apt-get install -y ca-certificates build-essential wget libpcre3 libpcre3-dev zlib1g zlib1g-dev libssl-dev
 
-RUN wget http://www.openssl.org/source/openssl-${OPENSSL_VERSION}.tar.gz \
-  && tar -xvzf openssl-${OPENSSL_VERSION}.tar.gz \
-  && cd openssl-${OPENSSL_VERSION} \
+ARG OPENSSL_VERSION=1_0_2f
+RUN wget https://github.com/openssl/openssl/archive/OpenSSL_${OPENSSL_VERSION}.tar.gz \
+  && tar -xvzf OpenSSL_${OPENSSL_VERSION}.tar.gz \
+  && cd OpenSSL_${OPENSSL_VERSION} \
   && ./config \
     --prefix=/usr \
     --openssldir=/usr/ssl \
@@ -21,6 +22,9 @@ RUN wget http://www.openssl.org/source/openssl-${OPENSSL_VERSION}.tar.gz \
     --openssldir=/usr/local/ssl \
   && make clean \
   && make && make install
+
+ARG NGINX_VERSION
+ENV NGINX_VERSION ${NGINX_VERSION:-1.9.9}
 
 RUN wget http://nginx.org/download/nginx-${NGINX_VERSION}.tar.gz \
   && tar -xzvf nginx-${NGINX_VERSION}.tar.gz
