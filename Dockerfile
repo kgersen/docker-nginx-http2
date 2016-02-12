@@ -1,8 +1,6 @@
 FROM debian:jessie
 
-# original author: Dylan Wang "wanghaoyu@frazil.me"
-# see : https://github.com/Ehekatl/docker-nginx-http2
-MAINTAINER Kirth Gersen "kgersen@hotmail.com"
+MAINTAINER Dylan Wang "wanghaoyu@frazil.me"
 # ARGS:
 #  OPENSSL_VERSION (format : x_y_zt)
 #  NGINX_VERSION (format : x.y.z)
