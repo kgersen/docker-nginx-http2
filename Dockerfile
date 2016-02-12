@@ -4,10 +4,11 @@ MAINTAINER Dylan Wang "wanghaoyu@frazil.me"
 # ARGS:
 #  OPENSSL_VERSION (format : x_y_zt)
 #  NGINX_VERSION (format : x.y.z)
+# ARG not working with automated Docker Hub builds
 
 RUN apt-get update && apt-get install -y ca-certificates build-essential wget libpcre3 libpcre3-dev zlib1g zlib1g-dev libssl-dev
 
-ARG OPENSSL_VERSION=1_0_2f
+#ARG OPENSSL_VERSION=1_0_2f
 RUN wget https://github.com/openssl/openssl/archive/OpenSSL_${OPENSSL_VERSION}.tar.gz \
   && tar -xvzf OpenSSL_${OPENSSL_VERSION}.tar.gz \
   && cd openssl-OpenSSL_${OPENSSL_VERSION} \
@@ -21,7 +22,7 @@ RUN wget https://github.com/openssl/openssl/archive/OpenSSL_${OPENSSL_VERSION}.t
   && make clean \
   && make && make install
 
-ARG NGINX_VERSION
+#ARG NGINX_VERSION
 ENV NGINX_VERSION ${NGINX_VERSION:-1.9.11}
 
 RUN wget http://nginx.org/download/nginx-${NGINX_VERSION}.tar.gz \
