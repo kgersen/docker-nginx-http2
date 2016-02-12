@@ -22,7 +22,7 @@ RUN wget https://github.com/openssl/openssl/archive/OpenSSL_${OPENSSL_VERSION}.t
   && make && make install
 
 ARG NGINX_VERSION
-ENV NGINX_VERSION ${NGINX_VERSION:-1.9.9}
+ENV NGINX_VERSION ${NGINX_VERSION:-1.9.11}
 
 RUN wget http://nginx.org/download/nginx-${NGINX_VERSION}.tar.gz \
   && tar -xzvf nginx-${NGINX_VERSION}.tar.gz
