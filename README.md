@@ -1,4 +1,8 @@
-# docker-nginx-http2
+# nginx-http2-alpn
+
+copied from: https://hub.docker.com/r/ehekatl/docker-nginx-http2/
+and changed `ehekatl/docker-nginx-http2` to `kgersen/nginx-http2-alpn`  to use this image.
+
 Docker image for nginx 1.9.11 with openssl 1.0.2f and http2 module support
 
 ## What's inside
@@ -34,10 +38,10 @@ Docker image for nginx 1.9.11 with openssl 1.0.2f and http2 module support
  - Error log: `/var/log/nginx/error.log`
 
 ## How to use this image
-`$ docker run --name some-nginx -v /some/content:/usr/share/nginx/html:ro -d ehekatl/docker-nginx-http2`
+`$ docker run --name some-nginx -v /some/content:/usr/share/nginx/html:ro -d kgersen/nginx-http2-alpn`
 Alternatively, a simple Dockerfile can be used to generate a new image that includes the necessary content (which is a much cleaner solution than the bind mount above):
 ```
-FROM ehekatl/docker-nginx-http2
+FROM kgersen/nginx-http2-alpn
 COPY static-html-directory /usr/share/nginx/html
 ```
 Place this file in the same directory as your directory of content ("static-html-directory"), run `docker build -t some-content-nginx` ., then start your container:
@@ -48,7 +52,7 @@ exposing the port
 Then you can hit http://localhost:8080 or http://host-ip:8080 in your browser.
 
 ## Complex configuration
-`$ docker run --name some-nginx -v /some/nginx.conf:/etc/nginx/nginx.conf:ro -d ehekatl/docker-nginx-http2`
+`$ docker run --name some-nginx -v /some/nginx.conf:/etc/nginx/nginx.conf:ro -d kgersen/nginx-http2-alpn`
 For information on the syntax of the Nginx configuration files, see the official documentation (specifically the Beginner's Guide).
 
 Be sure to include daemon off; in your custom configuration to ensure that Nginx stays in the foreground so that Docker can track the process properly (otherwise your container will stop immediately after starting)!
@@ -58,7 +62,7 @@ If you wish to adapt the default configuration, use something like the following
 `$ docker cp some-nginx:/etc/nginx/nginx.conf /some/nginx.conf`
 As above, this can also be accomplished more cleanly using a simple Dockerfile:
 ```
-FROM ehekatl/docker-nginx-http2
+FROM kgersen/nginx-http2-alpn
 COPY nginx.conf /etc/nginx/nginx.conf
 ```
 Then, build with docker build -t some-custom-nginx . and run:
