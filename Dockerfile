@@ -10,7 +10,7 @@ RUN apt-get update && apt-get install -y ca-certificates build-essential wget li
 ARG OPENSSL_VERSION=1_0_2f
 RUN wget https://github.com/openssl/openssl/archive/OpenSSL_${OPENSSL_VERSION}.tar.gz \
   && tar -xvzf OpenSSL_${OPENSSL_VERSION}.tar.gz \
-  && cd OpenSSL_${OPENSSL_VERSION} \
+  && cd openssl-OpenSSL_${OPENSSL_VERSION} \
   && ./config \
     --prefix=/usr \
     --openssldir=/usr/ssl \
