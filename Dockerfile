@@ -8,7 +8,8 @@ MAINTAINER Dylan Wang "wanghaoyu@frazil.me"
 
 RUN apt-get update && apt-get install -y ca-certificates build-essential wget libpcre3 libpcre3-dev zlib1g zlib1g-dev libssl-dev
 
-#ARG OPENSSL_VERSION=1_0_2f
+#ARG OPENSSL_VERSION
+ENV OPENSSL_VERSION ${OPENSSL_VERSION:-1_0_2f}
 RUN wget https://github.com/openssl/openssl/archive/OpenSSL_${OPENSSL_VERSION}.tar.gz \
   && tar -xvzf OpenSSL_${OPENSSL_VERSION}.tar.gz \
   && cd openssl-OpenSSL_${OPENSSL_VERSION} \
