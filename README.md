@@ -3,11 +3,11 @@
 copied from: https://hub.docker.com/r/ehekatl/docker-nginx-http2/
 and changed `ehekatl/docker-nginx-http2` to `kgersen/nginx-http2-alpn`  to use this image.
 
-Docker image for nginx 1.9.11 with openssl 1.0.2f and http2 module support
+Docker image for nginx 1.11.8 with openssl 1.1.0c and http2 module support
 
 ## What's inside
- - Nginx 1.9.11 build from source (works exactly like official nginx image)
- - Openssl 1.0.2f build from source and pre-installed
+ - Nginx 1.11.8 build from source (works exactly like official nginx image)
+ - Openssl 1.1.0c build from source and pre-installed
  - Nginx http_v2_module
  - Nginx http_stub_status_module
  - Nginx http_realip_module
