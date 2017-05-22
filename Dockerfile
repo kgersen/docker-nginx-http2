@@ -6,8 +6,8 @@ MAINTAINER Dylan Wang "wanghaoyu@frazil.me"
 
 RUN apt-get update && apt-get install -y ca-certificates build-essential wget libpcre3 libpcre3-dev zlib1g zlib1g-dev libssl-dev
 
-ENV OPENSSL_VERSION ${OPENSSL_VERSION:-1.1.0c}
-ENV NGINX_VERSION ${NGINX_VERSION:-1.11.8}
+ENV OPENSSL_VERSION ${OPENSSL_VERSION:-1.1.0e}
+ENV NGINX_VERSION ${NGINX_VERSION:-1.13.0}
 
 
 RUN wget http://www.openssl.org/source/openssl-${OPENSSL_VERSION}.tar.gz \
